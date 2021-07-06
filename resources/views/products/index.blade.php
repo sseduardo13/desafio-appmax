@@ -30,11 +30,11 @@
       <td>{{ $product->description }}</td>
       <td>
         <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-          <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Visualizar</a>
-          <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Editar</a>
+          <a class="btn btn-info btn-sm" href="{{ route('products.show',$product->id) }}">Visualizar</a>
+          <a class="btn btn-primary btn-sm" href="{{ route('products.edit',$product->id) }}">Editar</a>
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger">Deletar</button>
+          <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
         </form>
       </td>
     </tr>
