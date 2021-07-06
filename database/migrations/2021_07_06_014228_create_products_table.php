@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name', 255);
             $table->string('description', 500)->nullable();
             $table->string('sku')->unique();
+            $table->integer('amount')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
             $table->softDeletes();
