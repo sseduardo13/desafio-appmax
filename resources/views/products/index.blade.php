@@ -6,7 +6,7 @@
           <h2>Desafio Appmax</h2>
       </div>
       <div class="pull-right">
-        <a class="btn btn-success" href="{{ route('products.create') }}"> Cadastrar Produto</a>
+        <a class="btn btn-success btn-sm" href="{{ route('products.create') }}"> Cadastrar Produto</a>
       </div>
     </div>
   </div>

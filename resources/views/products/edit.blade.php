@@ -29,7 +29,13 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
           <strong>Nome:</strong>
-          <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Nome">
+          <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Nome" required>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+          <strong>SKU:</strong>
+          <input type="text" name="sku" value="{{ $product->sku }}" class="form-control" placeholder="SKU" required>
         </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12">

@@ -23,7 +23,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'sku' => 'required|unique:products'
         ]);
 
         Product::create($request->all());
@@ -44,7 +45,8 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'sku' => 'required|unique:products'
         ]);
 
         $product->update($request->all());

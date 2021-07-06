@@ -33,6 +33,12 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
       <div class="form-group">
+        <strong>SKU:</strong>
+        <input type="text" name="sku" class="form-control" placeholder="SKU" required>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="form-group">
         <strong>Descrição:</strong>
         <textarea class="form-control" style="height:150px" name="description" placeholder="Descrição"></textarea>
       </div>
