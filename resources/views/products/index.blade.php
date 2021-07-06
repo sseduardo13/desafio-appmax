@@ -21,6 +21,7 @@
     <tr>
       <th>Nome</th>
       <th>Descrição</th>
+      <th>Quantidade</th>
       <th width="280px">Ações</th>
     </tr>
 
@@ -28,6 +29,7 @@
     <tr>
       <td>{{ $product->name }}</td>
       <td>{{ $product->description }}</td>
+      <td>{{ $product->amount }}</td>
       <td>
         <form action="{{ route('products.destroy',$product->id) }}" method="POST">
           <a class="btn btn-info btn-sm" href="{{ route('products.show',$product->id) }}">Visualizar</a>

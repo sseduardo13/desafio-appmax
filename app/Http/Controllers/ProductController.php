@@ -24,7 +24,8 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'sku' => 'required|unique:products'
+            'sku' => 'required|unique:products',
+            'amount' => 'required:numeric'
         ]);
 
         Product::create($request->all());
@@ -46,7 +47,8 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'sku' => 'required|unique:products'
+            'sku' => 'required',
+            'amount' => 'required|numeric'
         ]);
 
         $product->update($request->all());

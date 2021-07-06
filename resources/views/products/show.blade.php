@@ -30,5 +30,11 @@
       {{ $product->sku }}
     </div>
   </div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="form-group">
+      <strong>Quantidade:</strong>
+      {{ $product->amount }}
+    </div>
+  </div>
 </div>
 @endsection
