@@ -23,18 +23,23 @@ class StockController extends Controller
 
         $product = Product::findOrFail($id);
         
-        $stock = new Stock;
+        if ($product) {
+            $stock = new Stock;
+    
+            $stock->id_product = $product->id;
+            $stock->operation = 'add';
+            $stock->origin = 'system';
+            $stock->amount = $request->amount;
+            $stock->save();
+    
+            $product->amount += $request->amount;
+            $product->save();
+    
+            return redirect()->route('products.index')->with('success', 'Quantidade adicionada ao estoque com sucesso.');
+        } else {
+            return redirect()->back()->withErrors(['Produto não cadastrado.']);
+        }
 
-        $stock->id_product = $product->id;
-        $stock->operation = 'add';
-        $stock->origin = 'system';
-        $stock->amount = $request->amount;
-        $stock->save();
-
-        $product->amount = $product->amount + $request->amount;
-        $product->save();
-
-        return redirect()->route('products.index')->with('success', 'Quantidade adicionada com sucesso.');
     }
 
     public function downProduct($id)
@@ -52,24 +57,28 @@ class StockController extends Controller
         ]);
 
         $product = Product::findOrFail($id);
+
+        if ($product) {
+            if ($request->amount <= $product->amount) {
+                $stock = new Stock;
         
-        if ($request->amount <= $product->amount) {
-            $stock = new Stock;
-    
-            $stock->id_product = $product->id;
-            $stock->client = $request->client;
-            $stock->operation = 'down';
-            $stock->origin = 'system';
-            $stock->amount = $request->amount;
-            $stock->save();
-    
-            $product->amount = $product->amount - $request->amount;
-            $product->save();
-            
-            return redirect()->route('products.index')->with('success', 'Quantidade adicionada com sucesso.');
+                $stock->id_product = $product->id;
+                $stock->client = $request->client;
+                $stock->operation = 'down';
+                $stock->origin = 'system';
+                $stock->amount = $request->amount;
+                $stock->save();
+        
+                $product->amount -= $request->amount;
+                $product->save();
+                
+                return redirect()->route('products.index')->with('success', 'Quantidade baixada do estoque com sucesso.');
+            } else {
+                return redirect()->back()->withErrors(['Quantidade solicitada maior que quantidade em estoque.']);
+            }
         } else {
-            return redirect()->back()->withErrors(['Quantidade solicitada maior que quantidade em estoque.']);
-        }
+            return redirect()->back()->withErrors(['Produto não cadastrado.']);
+        }  
 
     }
 }
