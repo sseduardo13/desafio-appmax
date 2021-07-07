@@ -35,7 +35,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
           <strong>SKU:</strong>
-          <input type="text" name="sku" value="{{ $product->sku }}" class="form-control" placeholder="SKU" required>
+          <input type="text" name="sku" value="{{ $product->sku }}" class="form-control" placeholder="SKU" required readonly>
         </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12">
