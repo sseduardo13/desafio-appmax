@@ -3,83 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stock;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function addProduct($id)
+    {   
+        $product = Product::findOrFail($id);
+        
+        return view('stock.add-stock', compact('product'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function storeAddStock(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'amount' => 'required:numeric'
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $product = Product::findOrFail($id);
+        
+        $stock = new Stock;
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Stock $stock)
-    {
-        //
-    }
+        $stock->id_product = $product->id;
+        $stock->operation = 'add';
+        $stock->origin = 'system';
+        $stock->amount = $request->amount;
+        $stock->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Stock $stock)
-    {
-        //
-    }
+        $product->amount = $product->amount + $request->amount;
+        $product->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Stock $stock)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Stock  $stock
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Stock $stock)
-    {
-        //
+        return redirect()->route('products.index')->with('success', 'Quantidade adicionada com sucesso.');
     }
 }

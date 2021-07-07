@@ -34,6 +34,7 @@
         <form action="{{ route('products.destroy',$product->id) }}" method="POST">
           <a class="btn btn-info btn-sm" href="{{ route('products.show',$product->id) }}">Visualizar</a>
           <a class="btn btn-primary btn-sm" href="{{ route('products.edit',$product->id) }}">Editar</a>
+          <a href="{{url('stock/add-stock', $product->id)}}" class="btn btn-success btn-sm">Adicionar estoque</a>
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
