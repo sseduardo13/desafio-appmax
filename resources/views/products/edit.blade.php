@@ -35,13 +35,13 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
           <strong>SKU:</strong>
-          <input type="text" name="sku" value="{{ $product->sku }}" class="form-control" placeholder="SKU" required readonly>
+          <input type="text" name="sku" value="{{ $product->sku }}" class="form-control" placeholder="SKU" readonly>
         </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
           <strong>Quantidade:</strong>
-          <input type="number" name="amount" value="{{ $product->amount }}" class="form-control" required>
+          <input type="number" name="amount" value="{{ $product->amount }}" class="form-control" readonly>
         </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12">

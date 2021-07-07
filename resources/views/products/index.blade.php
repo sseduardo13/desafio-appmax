@@ -6,7 +6,7 @@
           <h2>Desafio Appmax</h2>
       </div>
       <div class="pull-right">
-        <a class="btn btn-success btn-sm" href="{{ route('products.create') }}"> Cadastrar Produto</a>
+        <a class="btn btn-primary btn-sm" href="{{ route('products.create') }}"> Cadastrar Produto</a>
       </div>
     </div>
   </div>
@@ -32,13 +32,23 @@
       <td>{{ $product->amount }}</td>
       <td>
         <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-          <a class="btn btn-info btn-sm" href="{{ route('products.show',$product->id) }}">Visualizar</a>
-          <a class="btn btn-primary btn-sm" href="{{ route('products.edit',$product->id) }}">Editar</a>
-          <a href="{{url('stock/add-stock', $product->id)}}" class="btn btn-success btn-sm">Adicionar ao estoque</a>
-          <a href="{{url('stock/down-stock', $product->id)}}" class="btn btn-success btn-sm">Baixar do estoque</a>
+          <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Visualizar" href="{{ route('products.show',$product->id) }}">
+            <i class="fas fa-eye fa-md"></i>
+          </a>
+          <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" href="{{ route('products.edit',$product->id) }}">
+            <i class="fas fa-pen fa-md"></i>
+          </a>
+          <a class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Adicionar ao estoque" href="{{url('stock/add-stock', $product->id)}}">
+            <i class="fas fa-arrow-circle-up fa-lg"></i>
+          </a>
+          <a class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Baixar do estoque" href="{{url('stock/down-stock', $product->id)}}">
+            <i class="fas fa-arrow-circle-down fa-lg"></i>
+          </a>
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+          <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Deletar">
+            <i class="fas fa-trash-alt fa-md"></i>
+          </button>
         </form>
       </td>
     </tr>
