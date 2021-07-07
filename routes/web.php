@@ -23,5 +23,6 @@ Route::get('/', function () {
 Route::resource('products', ProductController::class);
 
 Route::get('stock/add-stock/{id}', [StockController::class, 'addProduct']);
-Route::post('stock/{id}', [StockController::class, 'storeAddStock']);
-Route::post('stock/{id}', [StockController::class, 'storeDownStock']);
+Route::post('stock/add/{id}', [StockController::class, 'storeAddStock']);
+Route::get('stock/down-stock/{id}', [StockController::class, 'downProduct']);
+Route::post('stock/down/{id}', [StockController::class, 'storeDownStock']);
