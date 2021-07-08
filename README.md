@@ -2,6 +2,7 @@
 
 ### Pré-requisitos
 - Necessário ter o Docker instalado e rodando
+- Para a instalação e execução todos os contễineres deverão estar parados
 
 ### Instalação:
 ```bash
@@ -24,11 +25,25 @@ $ ./vendor/bin/sail up
  $ ./vendor/bin/sail npm install
  ```
 
+### Execução:
+- Para execução utilize o comando abaixo dentro da pasta do projeto
+```bash
+ $ ./vendor/bin/sail up
+ ```
+- Manter aberto o terminal durante a execução, para finalizar a execução utilize as teclas Ctrl + C.
+### API:
+A API possui dois endpoints no método POST:
+- Adicionar produtos ao estoque: 
+  - Endereço: localhost/api/adicionar-produtos 
+  - O JSON para envio da requisição deverá conter o SKU do produto e quantidade (sku, amount)
+- Baixar produtos do estoque:
+  - Endereço: localhost/api/baixar-produtos
+  - O JSON para envio da requisição deverá conter o SKU do produto, a quantidade e o cliente (sku, amount, client)
 ### Acesso
 <p>Login: </p>
 <p>Senha: </p>
 
 ### Tecnologias utilizadas
-- Laravel: 8.0
-- PHP: 8.0
-- MySql: 8.0
+- Laravel: 8
+- PHP: 8
+- MySql: 8
