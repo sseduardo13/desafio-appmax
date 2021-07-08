@@ -92,13 +92,13 @@
 
                         <x-slot name="content">
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
-                            </div>
+                            <!-- <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Gerenciar conta') }}
+                            </div> -->
 
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
-                            </x-jet-dropdown-link>
+                            <!-- <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Perfil') }}
+                            </x-jet-dropdown-link> -->
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
