@@ -30,3 +30,6 @@ Route::post('stock/down/{id}', [StockController::class, 'storeDownStock']);
 
 Route::get('reports', [ReportController::class, 'index']);
 Route::post('reports', [ReportController::class, 'getStockReport']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
