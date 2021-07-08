@@ -1,9 +1,13 @@
-@extends('reports.layout')
+@extends('layout')
+@section('title', 'Relatórios')
 @section('content')
   <div class="row">
     <div class="col-lg-12 margin-tb">
       <div class="pull-left">
           <h3>Relatório de movimentação diária de produtos</h3>
+      </div>
+      <div class="pull-right">
+        <a class="btn btn-primary" href="{{ url('dashboard') }}"> Voltar</a>
       </div>
     </div>
   </div>

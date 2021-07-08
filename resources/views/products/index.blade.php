@@ -1,12 +1,10 @@
-@extends('products.layout')
+@extends('layout')
+@section('title', 'Produtos')
 @section('content')
   <div class="row">
     <div class="col-lg-12 margin-tb">
-      <div class="pull-left">
-          <h2>Desafio Appmax</h2>
-      </div>
       <div class="pull-right">
-        <a class="btn btn-primary btn-sm" href="{{ route('products.create') }}"> Cadastrar Produto</a>
+        <a class="btn btn-primary" href="{{ url('dashboard') }}"> Voltar</a>
       </div>
     </div>
   </div>
@@ -54,4 +52,7 @@
     </tr>
     @endforeach
   </table>
+  <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+    <a class="btn btn-primary" href="{{ route('products.create') }}"> Cadastrar Produto</a>
+  </div>
 @endsection

@@ -1,4 +1,5 @@
-@extends('reports.layout')
+@extends('layout')
+@section('title', 'Relatórios')
 @section('content')
   <div class="row">
     <div class="col-lg-12 margin-tb">
