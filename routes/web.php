@@ -21,15 +21,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('products', ProductController::class);
+Route::middleware(['auth:sanctum', 'verified'])->resource('products', ProductController::class);
 
-Route::get('stock/add-stock/{id}', [StockController::class, 'addProduct']);
-Route::post('stock/add/{id}', [StockController::class, 'storeAddStock']);
-Route::get('stock/down-stock/{id}', [StockController::class, 'downProduct']);
-Route::post('stock/down/{id}', [StockController::class, 'storeDownStock']);
+Route::middleware(['auth:sanctum', 'verified'])->get('stock/add-stock/{id}', [StockController::class, 'addProduct']);
+Route::middleware(['auth:sanctum', 'verified'])->post('stock/add/{id}', [StockController::class, 'storeAddStock']);
+Route::middleware(['auth:sanctum', 'verified'])->get('stock/down-stock/{id}', [StockController::class, 'downProduct']);
+Route::middleware(['auth:sanctum', 'verified'])->post('stock/down/{id}', [StockController::class, 'storeDownStock']);
 
-Route::get('reports', [ReportController::class, 'index']);
-Route::post('reports', [ReportController::class, 'getStockReport']);
+Route::middleware(['auth:sanctum', 'verified'])->get('reports', [ReportController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->post('reports', [ReportController::class, 'getStockReport']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
