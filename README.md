@@ -40,8 +40,9 @@ A API possui dois endpoints no método POST:
   - Endereço: localhost/api/baixar-produtos
   - O JSON para envio da requisição deverá conter o SKU do produto, a quantidade e o cliente (sku, amount, client)
 ### Acesso
-<p>Login: </p>
-<p>Senha: </p>
+- Na localhost no canto superior direito, clique em Registrar, após efetuado seu cadastro você será redirecionado para a página inicial
+- Em um segundo acesso basta clicar em Log In e preencher seus dados de cadastro
+- Para sair do sistema clique sobre seu nome e no menu dropdown clique em Log Out
 
 ### Tecnologias utilizadas
 - Laravel: 8
