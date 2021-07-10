@@ -1,36 +1,46 @@
 # Desafio Appmax
 
 ### Pré-requisitos
-- Necessário ter o Docker instalado e rodando
-- Para a instalação e execução todos os contễineres deverão estar parados
+- Docker instalado e rodando
+- Todos os contễineres rodando na máquina deverão estar parados
 
 ### Instalação:
 ```bash
 # Clona o projeto deste repositório
 $ git clone https://github.com/sseduardo13/desafio-appmax.git
 
-# Acessa a pasta do projeto
+# Acessar a pasta do projeto
 $ cd desafio-appmax
 
-# Executa o docker (sail)
-$ ./vendor/bin/sail up
+# Instalar o projeto
+$ docker run --rm --interactive --tty --volume $PWD:/app composer install
 
-# O servidor iniciará como localhost - acesse http://localhost
+# Renomear o arquivo .env.example
+$ mv .env.example .env
+
+# Executar o docker (sail)
+$ ./vendor/bin/sail up
+```
+- Em outra aba do terminal executar:
+```bash
+# Gerar a chave encriptada para o projeto
+$ ./vendor/bin/sail artisan key:generate
+
+# Aplicar configurações do arquivo .env
+$ ./vendor/bin/sail artisan config:cache
+
+# Instalar as bibliotecas do projeto
+$ ./vendor/bin/sail npm install
 ```
 - Manter aberto o terminal durante a execução, para finalizar a execução utilize as teclas Ctrl + C.
 
-- Em outra aba do terminal execute:
-```bash
- # Instala as bibliotecas do projeto
- $ ./vendor/bin/sail npm install
- ```
-
 ### Execução:
-- Para execução utilize o comando abaixo dentro da pasta do projeto
+- A cada nova execução deverá ser utilizado o comando abaixo dentro da pasta do projeto
 ```bash
  $ ./vendor/bin/sail up
  ```
 - Manter aberto o terminal durante a execução, para finalizar a execução utilize as teclas Ctrl + C.
+
 ### API:
 A API possui dois endpoints no método POST:
 - Adicionar produtos ao estoque: 
